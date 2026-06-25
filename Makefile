@@ -7,14 +7,14 @@ BUILD_DIR := ./build
 all: main
 
 main: main.o
-	$(CC) $(CFLAGS) -o $(BUILD_DIR)/$@ $(BUILD_DIR)/$^
+	@$(CC) $(CFLAGS) -o $(BUILD_DIR)/$@ $(BUILD_DIR)/$^
 
 main.o: main.cpp
-	$(CC) $(CFLAGS) -c -o $(BUILD_DIR)/$@ $^
+	@$(CC) $(CFLAGS) -c -o $(BUILD_DIR)/$@ $^
 
 clean:
 	@echo "Removing build files..."
 	rm -rf $(BUILD_DIR)/*
 
-run:
+run: main
 	@./build/main
