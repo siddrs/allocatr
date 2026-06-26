@@ -1,16 +1,15 @@
 #ifndef FREELIST_H
 #define FREELIST_H
 
-typedef struct Node {
-    struct Node *next;
-    unsigned int size;  // size of the actual free space excluding the Node metadata
-} Node;
+#include "types.h"
 
 void print_node(Node *node);
 
+void print_all_nodes(Node *head);
+
 void coalesce();
 
-void split();
+AllocHeader *split(Node *head, Node *hole, unsigned int request_size);
 
 void traverse();
 

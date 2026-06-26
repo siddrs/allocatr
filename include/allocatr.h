@@ -1,18 +1,13 @@
 #ifndef ALLOCATR_H
 #define ALLOCATR_H
 
-#include "freelist.h"
+#include "types.h"
 
-typedef struct Header {
-    int magic;
-    int size;
-    int allocated;
-} Header;
-
+#define MAGIC 123456789
 
 Node *heap_init(unsigned int heap_size);
 
-void *pls_allocate(unsigned int request);
+void *pls_allocate(unsigned int request_size);
 
 void pls_free(void *ptr);
 
