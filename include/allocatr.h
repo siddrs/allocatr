@@ -5,6 +5,8 @@
 
 #define MAGIC 123456789
 
+extern Node *head;
+
 Node *heap_init(unsigned int heap_size);
 
 void *pls_allocate(unsigned int request_size);

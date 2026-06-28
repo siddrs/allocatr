@@ -3,15 +3,15 @@
 
 #include "types.h"
 
-void print_node(Node *node);
+void print_node(Node *node); // done
 
-void print_all_nodes(Node *head);
+void print_all_nodes(Node *head); // done
 
 void coalesce();
 
-AllocHeader *split(Node *head, Node *hole, unsigned int request_size);
+AllocHeader *split(Node *hole, unsigned int request_size); // done
 
-void traverse();
+Node *traverse(unsigned int request_size); //done
 
 #endif
 

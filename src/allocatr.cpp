@@ -1,7 +1,9 @@
+#include <iostream>
 #include <sys/mman.h>
-#include "types.h"
+
 #include "allocatr.h"
 #include "freelist.h"
+#include "types.h"
 
 Node *heap_init(unsigned int heap_size) {
     Node *node = (Node *) mmap(0, heap_size,
@@ -15,4 +17,13 @@ Node *heap_init(unsigned int heap_size) {
 }
 
 
+void *pls_allocate(unsigned int request_size) {
+    Node *hole = traverse(request_size);
+    AllocHeader *block = split(hole, request_size);
+    block->in_use = 1;
+    void *user_ptr = (void *)((char *)block + sizeof(AllocHeader));
+
+    std::cout << "Allocated " << block->size << " bytes." << std::endl;
+    return user_ptr;
+}
 
